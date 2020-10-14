@@ -71,7 +71,7 @@ function addDepartment() {
     }])
     .then(function (answer) {
       // insert a new department into the db with that info
-      connection.query('INSERT INTO department (department_name) VALUES ?',
+      connection.query('INSERT INTO department (name) VALUES (?)',
         (answer.department),
         function (err) {
           if (err) throw err;
@@ -107,11 +107,11 @@ function addRole() {
 };
 // function to handle viewing of all depts
 function viewDepartments() {
-  connection.query("SELECT department_name FROM department", 
+  connection.query("SELECT name FROM department", 
   function(err, res) {
     if (err) throw err;
     // Log all results of the SELECT statement
-    console.log(res);
+    console.table(res);
     start();
   });
 }
@@ -121,7 +121,7 @@ function viewRoles() {
   function(err, res) {
     if (err) throw err;
     // Log all results of the SELECT statement
-    console.log(res);
+    console.table(res);
     start();
   });
 }
@@ -131,9 +131,8 @@ function viewEmployees() {
   function(err, res) {
     if (err) throw err;
     // Log all results of the SELECT statement
-    console.log(res);
+    console.table(res);
     start();
   });
 }
-
 start();
