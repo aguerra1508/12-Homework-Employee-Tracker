@@ -47,11 +47,11 @@ function start() {
       } else if (answer.task === "Add Role") {
         addRole();
       } else if (answer.task === "View Departments") {
-        console.log("View Departments")
+        viewDepartments();
       } else if (answer.task === "View Roles") {
-        console.log("View Roles")
+        viewRoles();
       } else if (answer.task === "View Employees") {
-        console.log("View Employees")
+        viewEmployees();
       } else if (answer.task === "Update Employees") {
         console.log("Update Employees")
       } else {
@@ -105,5 +105,35 @@ function addRole() {
     start();
   })
 };
+// function to handle viewing of all depts
+function viewDepartments() {
+  connection.query("SELECT department_name FROM department", 
+  function(err, res) {
+    if (err) throw err;
+    // Log all results of the SELECT statement
+    console.log(res);
+    start();
+  });
+}
+//function to handle viewing of all roles
+function viewRoles() {
+  connection.query("SELECT title FROM role", 
+  function(err, res) {
+    if (err) throw err;
+    // Log all results of the SELECT statement
+    console.log(res);
+    start();
+  });
+}
+//function to handle viewing of all employees
+function viewEmployees() {
+  connection.query("SELECT first_name, last_name FROM employee", 
+  function(err, res) {
+    if (err) throw err;
+    // Log all results of the SELECT statement
+    console.log(res);
+    start();
+  });
+}
 
 start();
