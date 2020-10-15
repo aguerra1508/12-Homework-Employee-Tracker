@@ -176,7 +176,7 @@ function viewDepartments() {
 // function to handle viewing of all roles
 function viewRoles() {
   connection.query("SELECT * FROM role",
-    function (err, anser) {
+    function (err, answer) {
       if (err) throw err;
       // Log all results of the SELECT statement
       console.table(answer);
