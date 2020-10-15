@@ -25,7 +25,7 @@ connection.connect(function (err) {
 });
 
 // function which prompts the user for what action they should take
-function start() {
+async function start() {
   inquirer
     .prompt({
       name: "task",
@@ -166,29 +166,30 @@ function addEmployee() {
 // function to handle viewing of all depts
 function viewDepartments() {
   connection.query("SELECT * FROM department",
-    function (err, res) {
+    function (err, answer) {
       if (err) throw err;
       // Log all results of the SELECT statement
-      console.table(res);
+      console.table(answer);
       start();
     });
 }
 // function to handle viewing of all roles
 function viewRoles() {
   connection.query("SELECT * FROM role",
-    function (err, res) {
+    function (err, anser) {
       if (err) throw err;
       // Log all results of the SELECT statement
-      console.table(res);
+      console.table(answer);
       start();
     });
 }
 // function to handle viewing of all employees
 function viewEmployees() {
-  cconnection.query("SELECT employees.id, employees.first_name, employees.last_name, roles.title, roles.salary, departments.dept_name AS department, CONCAT(manager.first_name, ' ', manager.last_name) AS manager FROM employees LEFT JOIN roles ON role_id = roles.id LEFT JOIN departments on roles.dept_id = departments.id LEFT JOIN employees manager ON manager.id = employees.manager_id", function (err, res) {
+  connection.query("SELECT * FROM employee",
+  function (err, answer) {
     if (err) throw err;
     // Log all results of the SELECT statement
-    console.table(res);
+    console.table(answer);
     start();
   });
 }
@@ -198,10 +199,10 @@ function updateEmployee() {
   var employeeList = [];
   connection.query(
     "SELECT employee.id, employee.first_name, employee.last_name FROM employee",
-    function (err, res) {
+    function (err, answer) {
       // for list to pull up employees in db  
-      for (let i = 0; i < res.length; i++) {
-        employeeList.push(res[i].id + " " + res[i].first_name + " " + res[i].last_name);
+      for (let i = 0; i < answer.length; i++) {
+        employeeList.push(answer[i].id + " " + answer[i].first_name + " " + answer[i].last_name);
       }
       // prompt for info
       inquirer.prompt([{
@@ -216,15 +217,15 @@ function updateEmployee() {
           message: "What is the employee's new role?",
 
         }
-      ]).then(function (res) {
-        connection.query(`UPDATE employee SET role_id = ${res.newRole} WHERE id = ${res.employeeList}`,
-          function (err, res) {
+      ]).then(function (answer) {
+        connection.query(`UPDATE employee SET role_id = ${answer.newRole}`,
+          function (err, answer) {
             if (err) throw err;
-            console.log(res);
+            // Log all results of the 
+            console.log("Role updated");
             start();
           });
       });
     });
 };
-
 start();
