@@ -1,8 +1,8 @@
-# Analee Guerra's Homework 11 - Express Homework: Note Taker
+# Analee Guerra's Homework 12 - Employee Tracker
 
 ## Description
 
-An application that can be used to help manage a company's employees using node, inquirer, and MySQL. This application uses MySQL database to help organize and contain the company employee data. The user is able to add departments, add roles,vadd employees, view departments, view roles, view employees and also update employee roles. This can be used to can organize and plan a business.
+An application that can be used to help manage a company's employees using node, inquirer, and MySQL. This application uses MySQL database to help organize and contain the company employee data. The user is able to add departments, add roles, add employees, view departments, view roles, view employees and also update employee roles. This can be used to can organize and plan a business.
 
 ## Table of Contents
 
@@ -20,7 +20,10 @@ An application that can be used to help manage a company's employees using node,
 
 Visual Studio (VS) code and the MySQL Workbench applications are needed.
 
+To set up the database in MySQL, the user should run the `schema.sql` in their MySQL application. For demonstration purposes, the user may also use the information contained in the `seeds.sql` file to view functionality. 
+
 To run the application via VS code, the user must run the following commands: `npm init` and `npm i mysql` to install the necessary `package-lock.json` and `node_modules`. Once the installs are complete, the application may be run via the following command: `node index.js`.
+
 
 ## Usage
 
