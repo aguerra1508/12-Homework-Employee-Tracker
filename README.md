@@ -28,7 +28,7 @@ To run the application via VS code, the user must run the following commands: `n
 ## Usage
 
 Functionality of the application demonstrated using VS code:
-
+https://github.com/aguerra1508/12-Homework-Employee-Tracker/blob/master/Untitled_%20Oct%2014%2C%202020%2010_19%20PM.gif
 
 ## Credits
 
