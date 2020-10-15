@@ -217,7 +217,7 @@ function updateEmployee() {
 
         }
       ]).then(function (res) {
-        connection.query(`UPDATE employee SET role_id = ${res.role} WHERE id = ${res.allEmp}`,
+        connection.query(`UPDATE employee SET role_id = ${res.newRole} WHERE id = ${res.employeeList}`,
           function (err, res) {
             if (err) throw err;
             console.log(res);
